@@ -21,12 +21,13 @@ int getmax(int arr[],int left,int mid,int right){
     return rightsum+leftsum;
 }
 int maxsubsum(int arr[],int left,int right){
-    if(left==right){return arr[left];}
+    if(left==right){return max(0,arr[left]);}
     int mid=(left+right)/2;
     int lm=maxsubsum(arr,left,mid);
     int rm=maxsubsum(arr,mid+1,right);
     int cm=getmax(arr,left,mid,right);
-    if(lm>=cm && lm>=rm){return lm;}
+    if(lm<0 && cm<0 && rm){return 0;)
+    else if(lm>=cm && lm>=rm){return lm;}
     else if(cm>=lm && cm>=rm){return cm;}
     else return rm;
 }
